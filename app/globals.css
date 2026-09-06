@@ -1,0 +1,754 @@
+/* ---------------------------------------------------------------------------
+   Harvest — design tokens
+
+   Direction: the page behaves like an engineering document, not a landing page.
+   Pale drafting ground; measured values set in mono; data appears in dark
+   "instrument" panels that read as screens sitting on paper. The accent teal is
+   lifted directly out of the depth colourmap used in the data graphics, so the
+   page and its figures belong to one system.
+--------------------------------------------------------------------------- */
+
+:root {
+  --ground: #e9ebe7;
+  --paper: #f4f5f2;
+  --panel: #0f1317;
+  --ink: #12161a;
+  --graphite: #5b6660;
+  --quiet: #7d8781;
+  --rule: #c7ccc6;
+  --rule-firm: #a8b0a9;
+  --teal: #1f8c82;
+  --teal-deep: #146a62;
+  --amber: #b5791f;
+
+  --measure: 62ch;
+  --gutter: clamp(20px, 4.5vw, 64px);
+  --bar: 1px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.62;
+  font-feature-settings: "kern" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+::selection {
+  background: var(--teal);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 3px;
+}
+
+/* --- layout --------------------------------------------------------------- */
+
+.wrap {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.band {
+  padding-block: clamp(64px, 9vw, 132px);
+  border-top: var(--bar) solid var(--rule);
+  /* anchor jumps must clear the sticky masthead */
+  scroll-margin-top: 62px;
+}
+
+/* --- type ----------------------------------------------------------------- */
+
+.display {
+  margin: 0;
+  font-size: clamp(2.5rem, 4.6vw, 4.05rem);
+  line-height: 1.0;
+  letter-spacing: -0.036em;
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+.h2 {
+  margin: 0 0 20px;
+  font-size: clamp(1.65rem, 3vw, 2.6rem);
+  line-height: 1.06;
+  letter-spacing: -0.026em;
+  font-weight: 650;
+  max-width: 20ch;
+}
+
+.h3 {
+  margin: 0 0 10px;
+  font-size: 1.0625rem;
+  line-height: 1.35;
+  letter-spacing: -0.012em;
+  font-weight: 620;
+}
+
+.lede {
+  margin: 0;
+  font-size: clamp(1.0625rem, 1.35vw, 1.28rem);
+  line-height: 1.55;
+  color: var(--graphite);
+  max-width: var(--measure);
+}
+
+.body {
+  margin: 0 0 1.1em;
+  max-width: var(--measure);
+  color: var(--graphite);
+}
+
+.body:last-child {
+  margin-bottom: 0;
+}
+
+.body strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Measured values only — never decorative labels. */
+.mono {
+  font-family: var(--font-plex-mono), ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.015em;
+  font-variant-numeric: tabular-nums;
+}
+
+.index {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: 0.76rem;
+  color: var(--quiet);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- section heading block ------------------------------------------------ */
+
+.head {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: 0 clamp(16px, 3vw, 40px);
+  margin-bottom: clamp(32px, 4.5vw, 56px);
+}
+
+.head-num {
+  padding-top: 0.55rem;
+  border-top: var(--bar) solid var(--rule-firm);
+}
+
+.head-body {
+  min-width: 0;
+}
+
+@media (max-width: 720px) {
+  .head {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .head-num {
+    border-top: 0;
+    padding-top: 0;
+  }
+}
+
+/* --- header --------------------------------------------------------------- */
+
+.masthead {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: color-mix(in srgb, var(--ground) 88%, transparent);
+  backdrop-filter: saturate(1.4) blur(9px);
+  border-bottom: var(--bar) solid var(--rule);
+}
+
+.masthead-in {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  height: 62px;
+}
+
+.mark {
+  display: inline-flex;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Mark + wordmark lockup. The wordmark is set in the wide caps the brand
+   uses; the mark carries the colour, so the type stays quiet beside it. */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.logo-word {
+  font-weight: 640;
+  font-size: 0.98rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  line-height: 1;
+  padding-top: 0.06em;
+}
+
+.nav {
+  display: flex;
+  gap: clamp(14px, 2.4vw, 30px);
+  align-items: center;
+}
+
+.nav a {
+  font-size: 0.93rem;
+  color: var(--graphite);
+  text-decoration: none;
+  padding-block: 6px;
+  border-bottom: 1px solid transparent;
+}
+
+.nav a:hover {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+.nav-wide {
+  display: flex;
+  gap: clamp(14px, 2.4vw, 30px);
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .nav-wide {
+    display: none;
+  }
+}
+
+/* --- actions -------------------------------------------------------------- */
+
+.act {
+  display: inline-block;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 560;
+  padding: 11px 20px;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 120ms linear, border-color 120ms linear;
+}
+
+.act:hover {
+  background: var(--teal-deep);
+  border-color: var(--teal-deep);
+}
+
+.act-quiet {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--rule-firm);
+}
+
+.act-quiet:hover {
+  background: transparent;
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.act-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+/* --- hero ----------------------------------------------------------------- */
+
+.hero {
+  padding-top: clamp(52px, 7vw, 96px);
+  padding-bottom: clamp(44px, 6vw, 84px);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.06fr);
+  gap: clamp(28px, 4.5vw, 64px);
+  align-items: center;
+}
+
+@media (max-width: 940px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+}
+
+.hero-copy {
+  max-width: 46ch;
+}
+
+.hero-sub {
+  margin: 26px 0 0;
+  font-size: 1.09rem;
+  line-height: 1.55;
+  color: var(--graphite);
+  max-width: 46ch;
+}
+
+/* --- figures (dark instrument panels + light drawings) -------------------- */
+
+.fig {
+  margin: 0;
+}
+
+.fig-frame {
+  border: var(--bar) solid var(--rule-firm);
+  background: var(--panel);
+  overflow: hidden;
+}
+
+.fig-frame-light {
+  background: var(--ground);
+}
+
+/* --- the sequence (capture -> gate -> format -> delivery) ------------------ */
+
+.seq {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: var(--bar) solid var(--rule-firm);
+}
+
+@media (max-width: 860px) {
+  .seq {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .seq {
+    grid-template-columns: 1fr;
+  }
+}
+
+.seq-step {
+  padding: 22px 22px 26px 0;
+  border-right: var(--bar) solid var(--rule);
+}
+
+.seq-step:last-child {
+  border-right: 0;
+}
+
+@media (max-width: 860px) {
+  .seq-step {
+    border-bottom: var(--bar) solid var(--rule);
+    padding-right: 22px;
+  }
+  .seq-step:nth-child(2n) {
+    border-right: 0;
+  }
+}
+
+.seq-step p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--graphite);
+}
+
+.seq-tick {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--teal-deep);
+}
+
+/* --- specimen (an actual episode record, set as a data sheet) ------------- */
+
+.specimen {
+  border: var(--bar) solid var(--rule-firm);
+  background: var(--paper);
+}
+
+.specimen-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: var(--bar) solid var(--rule-firm);
+}
+
+.specimen-id {
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.stamp {
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  padding: 4px 9px;
+  border: 1px solid var(--teal-deep);
+  color: var(--teal-deep);
+}
+
+.rows {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 700px) {
+  .rows {
+    grid-template-columns: 1fr;
+  }
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 11px 20px;
+  border-bottom: var(--bar) solid var(--rule);
+  border-right: var(--bar) solid var(--rule);
+}
+
+@media (max-width: 700px) {
+  .row {
+    border-right: 0;
+  }
+}
+
+.row-key {
+  font-size: 0.9rem;
+  color: var(--graphite);
+}
+
+.row-val {
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 0.84rem;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+/* --- figures / stats ------------------------------------------------------ */
+
+.figures {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(18px, 3vw, 40px);
+  margin-top: 8px;
+}
+
+@media (max-width: 860px) {
+  .figures {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.figure-item {
+  border-top: 2px solid var(--ink);
+  padding-top: 14px;
+}
+
+.figure-val {
+  font-size: clamp(1.6rem, 2.7vw, 2.3rem);
+  font-weight: 660;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.figure-key {
+  margin-top: 8px;
+  font-size: 0.88rem;
+  color: var(--graphite);
+  line-height: 1.4;
+}
+
+.footnote {
+  margin-top: 28px;
+  font-size: 0.88rem;
+  color: var(--quiet);
+  max-width: 72ch;
+}
+
+/* --- routes (deliberately a comparison table, not three identical cards) --- */
+
+.routes {
+  border-top: 2px solid var(--ink);
+}
+
+.route {
+  display: grid;
+  grid-template-columns: 13rem minmax(0, 1fr) 11rem;
+  gap: clamp(18px, 3.5vw, 48px);
+  padding: 26px 0;
+  border-bottom: var(--bar) solid var(--rule);
+  align-items: start;
+}
+
+@media (max-width: 880px) {
+  .route {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.route-who {
+  font-size: 0.9rem;
+  color: var(--quiet);
+}
+
+.route-name {
+  margin: 0 0 8px;
+  font-size: 1.22rem;
+  font-weight: 640;
+  letter-spacing: -0.018em;
+}
+
+.route p {
+  margin: 0;
+  color: var(--graphite);
+  font-size: 0.98rem;
+  max-width: 56ch;
+}
+
+.route-link {
+  font-size: 0.93rem;
+  color: var(--teal-deep);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--teal-deep) 40%, transparent);
+  justify-self: start;
+  align-self: start;
+}
+
+.route-link:hover {
+  border-bottom-color: var(--teal-deep);
+}
+
+/* --- two column prose ----------------------------------------------------- */
+
+.duo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(28px, 5vw, 76px);
+}
+
+@media (max-width: 880px) {
+  .duo {
+    grid-template-columns: 1fr;
+  }
+}
+
+.checks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.checks li {
+  display: grid;
+  grid-template-columns: 1.4rem 1fr;
+  gap: 4px;
+  padding: 11px 0;
+  border-bottom: var(--bar) solid var(--rule);
+  font-size: 0.97rem;
+  color: var(--graphite);
+}
+
+.checks li:first-child {
+  border-top: var(--bar) solid var(--rule);
+}
+
+.checks span {
+  color: var(--teal-deep);
+}
+
+/* --- contact -------------------------------------------------------------- */
+
+.form {
+  display: grid;
+  gap: 16px;
+  max-width: 520px;
+}
+
+.pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 560px) {
+  .pair {
+    grid-template-columns: 1fr;
+  }
+}
+
+.field label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--graphite);
+  margin-bottom: 6px;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 0.97rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--rule-firm);
+  border-radius: 0;
+  padding: 10px 12px;
+}
+
+.field textarea {
+  min-height: 118px;
+  resize: vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--teal);
+  box-shadow: inset 0 0 0 1px var(--teal);
+}
+
+.note {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.note-ok {
+  color: var(--teal-deep);
+}
+
+.note-bad {
+  color: #a5341c;
+}
+
+/* --- footer --------------------------------------------------------------- */
+
+.foot {
+  padding-block: 48px 56px;
+  border-top: var(--bar) solid var(--rule);
+}
+
+.foot-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px 48px;
+  justify-content: space-between;
+}
+
+.foot-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 26px;
+  font-size: 0.93rem;
+}
+
+.foot-links a {
+  color: var(--graphite);
+  text-decoration: none;
+}
+
+.foot-links a:hover {
+  color: var(--ink);
+}
+
+/* The legal row sits apart from the navigation links above it — a procurement
+   reviewer looks for these specifically, so they get their own line. */
+.foot-legal {
+  margin-top: 26px;
+  padding-top: 20px;
+  border-top: var(--bar) solid var(--rule);
+  font-size: 0.88rem;
+}
+
+.legal {
+  margin: 26px 0 0;
+  padding-top: 20px;
+  border-top: var(--bar) solid var(--rule);
+  font-size: 0.83rem;
+  line-height: 1.6;
+  color: var(--quiet);
+  max-width: 88ch;
+}
+
+/* --- one orchestrated entrance, and nothing else -------------------------- */
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.enter-1,
+.enter-2,
+.enter-3 {
+  animation: riseIn 620ms cubic-bezier(0.22, 0.68, 0.24, 1) both;
+}
+
+.enter-2 {
+  animation-delay: 90ms;
+}
+
+.enter-3 {
+  animation-delay: 190ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .enter-1,
+  .enter-2,
+  .enter-3 {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
