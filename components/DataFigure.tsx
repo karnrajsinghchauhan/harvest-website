@@ -806,6 +806,7 @@ export default function DataFigure({ kind, alt }: { kind: Kind; alt: string }) {
           style={{ width: "100%", height: "auto", display: "block", aspectRatio: `${w} / ${h}` }}
         />
       </div>
+      <figcaption className="figure-caption">Illustrative visualization · synthetic data, not a production record</figcaption>
     </figure>
   );
 }

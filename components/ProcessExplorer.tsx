@@ -1,0 +1,15 @@
+"use client";
+import { useState } from "react";
+import Link from "next/link";
+const stages = [
+  {name:"Teleoperate", input:"Task protocol + embodiment", output:"Human-guided demonstration", title:"Human skill, recorded as robot action.", body:"An operator guides the robot through a defined task. The collection protocol specifies starting conditions, interventions, outcomes, and safe recovery.", fields:["Task definition","Operator context","Action stream"], path:"the-data-business/capture-stack"},
+  {name:"Synchronize", input:"Sensor + controller streams", output:"Time-aligned episode", title:"Every signal shares the same timeline.", body:"Vision, robot state, actions, and contact measurements need aligned timestamps. Capture context explains the sensor geometry and configuration behind each signal.", fields:["Camera timestamps","Joint states","Calibration record"], path:"the-data-business/capture-stack"},
+  {name:"Review", input:"Recorded episode", output:"Accepted or rejected outcome", title:"Quality is an explicit decision.", body:"Integrity, kinematic, and task-level checks separate usable episodes from failures. Rejection reasons remain visible so collection can improve.", fields:["Integrity checks","Task outcome","Review evidence"], path:"the-data-business/data-business"},
+  {name:"Deliver", input:"Accepted episodes + provenance", output:"Versioned training dataset", title:"A dataset with its history attached.", body:"Accepted episodes are packaged with schema, calibration context, annotations, and manifests. The delivery contract defines what a buyer can inspect and load.", fields:["LeRobot v2","Modality metadata","Delivery manifest"], path:"the-data-business/delivery-format"},
+];
+export default function ProcessExplorer() {
+ const [active,setActive]=useState(0); const stage=stages[active];
+ return <section id="pipeline" className="wrap band"><div className="section-heading"><div><p className="eyebrow">01 / The collection pipeline</p><h2 className="h2">From physical action<br/>to training signal.</h2></div><p className="body">Explore the proposed workflow. Each stage has a defined input, output, and evidence trail.</p></div>
+ <div className="process-shell"><div className="process-controls" aria-label="Pipeline stages">{stages.map((item,i)=><button key={item.name} aria-pressed={active===i} aria-controls="process-detail" onClick={()=>setActive(i)}><span className="mono">0{i+1}</span>{item.name}<span aria-hidden="true">→</span></button>)}</div>
+ <div id="process-detail" className="process-detail" aria-live="polite"><div key={active} className="process-copy"><span className="instrument-label">Stage 0{active+1} / 04</span><h3>{stage.title}</h3><p>{stage.body}</p><Link href={"/docs/"+stage.path}>Read the specification ↗</Link></div><div className="signal-stack"><div><span>INPUT</span><strong>{stage.input}</strong></div><div className="signal-core"><span aria-hidden="true">↓</span><strong>{stage.name}</strong><ul>{stage.fields.map(f=><li key={f}>{f}</li>)}</ul><span aria-hidden="true">↓</span></div><div><span>OUTPUT</span><strong>{stage.output}</strong></div></div></div></div></section>;
+}

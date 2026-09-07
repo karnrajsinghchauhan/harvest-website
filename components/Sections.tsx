@@ -22,15 +22,16 @@ export function Hero() {
     <section id="top" className="wrap hero">
       <div className="hero-grid">
         <div className="hero-copy enter-1">
-          <h1 className="display">Somebody has to actually collect the hours.</h1>
+          <p className="eyebrow">Physical AI data infrastructure</p>
+          <h1 className="display">Intelligence needs contact with the real world.</h1>
           <p className="hero-sub">
-            Harvest runs teleoperated collection cells in the United States. Every
-            episode is calibrated before it starts, scored before it ships, and
-            delivered with its provenance attached.
+            Harvest is a US-registered company building robot-data operations in
+            the United States. Every episode is calibrated before capture, scored before it
+            ships, and delivered with its provenance attached.
           </p>
           <div className="act-row">
             <a href="#contact" className="act">
-              Talk to us about data
+              Build a data program
             </a>
             <a href="#episode" className="act act-quiet">
               See an episode
@@ -176,7 +177,7 @@ export function Capacity() {
     <section id="capacity" className="wrap band">
       <Head n="03 / 06" title="The ceiling is demand, not hardware.">
         <p className="lede">
-          A hundred cells across five sites produce roughly 17,550 usable hours a
+          Our published model projects a hundred cells across five sites producing roughly 17,550 usable hours a
           month. Selling that through needs about $1.9M of recurring buyer demand
           a month — which is why reserved capacity contracts are the strategic
           priority, not a pricing footnote.
@@ -216,7 +217,7 @@ const ROUTES = [
   {
     who: "For investors",
     name: "Machine Shares",
-    body: "A fractional economic interest in a named collection unit's revenue, structured as a securities offering with counsel behind it — an instrument, not a promise.",
+    body: "A proposed fractional economic interest in a named collection unit's revenue. The published design describes the structure and the legal work required before any offering.",
     key: "machineShares" as const,
   },
   {
@@ -228,7 +229,7 @@ const ROUTES = [
   {
     who: "Bring your own robot",
     name: "Device Holder Staking",
-    body: "Independent owners of a compatible robot stake a bond, pass certification, and are paid per accepted episode collected on the network.",
+    body: "A proposed route for independent owners of compatible robots, with certification, a quality bond, and payment per accepted episode. See the documentation for the network design.",
     // No page in the book yet — the design docs are written but not pushed to
     // the repo. Points at the docs root rather than mislinking to a different
     // structure; give it its own key once the page exists.
@@ -273,7 +274,7 @@ export function Routes() {
 /* -------------------------------------------------------------------------- */
 
 const CHECKS = [
-  "US-registered, US-operated, US data custody",
+  "US-registered company; collection operations in the United States",
   "Every episode scored at the gate before delivery",
   "Consent handled per use case, not a blanket waiver",
   "Licence covers commercial derivative models",

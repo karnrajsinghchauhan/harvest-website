@@ -20,24 +20,24 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Harvest — measured robot data, collected in the US",
+    default: "Harvest — Physical AI data infrastructure",
     template: "%s — Harvest",
   },
   description:
-    "Harvest runs teleoperated collection cells that produce embodiment-matched robot data: every episode calibrated, QA-gated, and delivered in GR00T LeRobot format with its provenance attached.",
+    "Harvest builds traceable, embodiment-matched robot datasets for physical AI — captured in real environments, QA-gated, and delivered with provenance.",
   openGraph: {
-    title: "Harvest — measured robot data, collected in the US",
+    title: "Harvest — Physical AI data infrastructure",
     description:
-      "Teleoperated collection cells producing embodiment-matched robot data. Calibrated, QA-gated, delivered with provenance attached.",
+      "Traceable, embodiment-matched robot data captured in real environments and delivered with provenance.",
     url: SITE_URL,
     siteName: "Harvest",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Harvest — measured robot data, collected in the US",
+    title: "Harvest — Physical AI data infrastructure",
     description:
-      "Teleoperated collection cells producing embodiment-matched robot data.",
+      "Traceable, embodiment-matched robot data for physical AI.",
   },
 };
 

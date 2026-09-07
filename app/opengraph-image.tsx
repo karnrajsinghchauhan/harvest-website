@@ -10,7 +10,7 @@ import { markSvg } from "@/lib/mark";
  * object as the site it points at.
  */
 
-export const alt = "Harvest — measured robot data, collected in the US";
+export const alt = "Harvest — physical AI data infrastructure";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -40,7 +40,7 @@ export default function Image() {
               HARVEST
             </div>
           </div>
-          <div style={{ color: "#5a6872", fontSize: 22 }}>collected in the United States</div>
+          <div style={{ color: "#5a6872", fontSize: 22 }}>US registered · US operations</div>
         </div>
 
         <div
@@ -53,7 +53,7 @@ export default function Image() {
             maxWidth: 940,
           }}
         >
-          Somebody has to actually collect the hours.
+          Intelligence needs contact with the real world.
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 26 }}>

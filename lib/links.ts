@@ -21,11 +21,11 @@
  * before publishing — renaming afterwards breaks every URL below.
  */
 
-export const SITE_URL = "https://app-karnrajsinghchauhans-projects.vercel.app";
+export const SITE_URL = "https://harvest-website-delta.vercel.app";
 
-export const DOCS_LIVE = false;
+export const DOCS_LIVE = true;
 
-export const DOCS_BASE = "https://harvest-docs.gitbook.io/harvest";
+export const DOCS_BASE = "https://harvest-3.gitbook.io/harvest-docs";
 export const DOCS_REPO = "https://github.com/karnrajsinghchauhan/harvest-docs";
 
 /**
